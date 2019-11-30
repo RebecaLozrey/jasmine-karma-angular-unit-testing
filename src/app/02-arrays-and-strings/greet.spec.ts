@@ -1,6 +1,6 @@
 import {greet} from './greet'
 
-describe('Greet Suite', () => {
+describe('GREET SUITE', () => {
   it('should contain the input name', ()=>{
     
     let name = "Mosh";
