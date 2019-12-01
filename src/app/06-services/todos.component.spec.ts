@@ -61,4 +61,28 @@ describe('TODOS COMPONENT SUITE', () => {
     expect(component.message).toBe(error);
   });
 
+  it('should delete when confirmation box is OK', () => {
+    //Arrage, override or mock the service
+    spyOn(window, 'confirm').and.returnValue(true);
+    let spy = spyOn(service,'delete').and.callFake( ()=> {
+      return Observable.empty();
+    });
+    //Act, Call the component that will call the service
+    component.delete(1);
+    //Assertion, expect to be
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+
+  it('should not call the server when confirmation box is cancelled', () => {
+    //Arrage, mock canceling the confirmation box
+    spyOn(window, 'confirm').and.returnValue(false);
+    let spy = spyOn(service,'delete').and.callFake( ()=> {
+      return Observable.empty();
+    });
+    //Act, Call the component that will call the service
+    component.delete(1);
+    //Assertion, expect to be
+    expect(spy).not.toHaveBeenCalled();
+  });
+
 });
