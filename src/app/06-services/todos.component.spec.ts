@@ -73,7 +73,7 @@ describe('TODOS COMPONENT SUITE', () => {
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  it('should not call the server when confirmation box is cancelled', () => {
+  xit('should not call the server when confirmation box is cancelled', () => {
     //Arrage, mock canceling the confirmation box
     spyOn(window, 'confirm').and.returnValue(false);
     let spy = spyOn(service,'delete').and.callFake( ()=> {
